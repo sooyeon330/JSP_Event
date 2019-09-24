@@ -24,22 +24,12 @@
 	%>
 	
 
-	<table class="template" cellpadding="2" cellspacing="0">
-
-		<tr>
-			<td class="top" colspan="3"><jsp:include page="top.jsp"
-					flush="false" /></td>
-		</tr>
-		
-		<tr>
-			<td class="content" valign="top">
-			<jsp:include  page="<%=contentPage%>" flush="false" /></td>
-		</tr>
-		<tr>
-			<td class="bottom" colspan="3">
-			<jsp:include page="bottom.jsp" flush="false" /></td>
-		</tr>
-	</table>
-
+	<jsp:include page="top.jsp" flush="false" />
+	<div class="content">
+		<jsp:include  page="<%=contentPage%>" flush="false" />
+	</div>
+	<div class="footer">
+		<jsp:include  page="bottom.jsp" flush="false" />
+	</div>
 </body>
 </html>
