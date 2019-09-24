@@ -1,6 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <div id="footer">
-
-<img src="img/logo.png" class="minilogo">
+	<img src="img/logo2.png" class="minilogo">
 </div>
