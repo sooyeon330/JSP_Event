@@ -20,27 +20,53 @@ Connection conn =null;
 PreparedStatement pstmt = null;
 ResultSet rs = null;
 
-String url = "jdbc:oracle:thin:@localhost:1521:XE";
-String user = "jsp_event";
-String pass = "3616";
 
-Class.forName("oracle.jdbc.driver.OracleDriver");
-conn = DriverManager.getConnection(url, user, pass);
 
-ArrayList<Spell> spell = new ArrayList<>();
-
+ArrayList<Spell> spellist = new ArrayList<>();
+int idx=0;
 try{
+	String url = "jdbc:oracle:thin:@localhost:1521:XE";
+	String user = "jsp_event";
+	String pass = "3616";
+
+	Class.forName("oracle.jdbc.driver.OracleDriver");
+	conn = DriverManager.getConnection(url, user, pass);
 	
-	String sql="SELECT * FROM SPELL WHERE ROWNUM < 5 ORDER BY DBMS_RANDOM.RANDOM";
+	String leftspell="";
+	String rightspell="";
+	String answer="";
+	
+	String sql="SELECT leftspell, rightspell, answer FROM SPELL WHERE ROWNUM <= 5 ORDER BY DBMS_RANDOM.RANDOM";
+	pstmt = conn.prepareStatement(sql);
+	rs = pstmt.executeQuery();
+	
+	while(rs.next()){
+		leftspell = rs.getString("leftspell");
+		rightspell = rs.getString("rightspell");
+		answer = rs.getString("answer");
+		
+		spellist.add(new Spell(leftspell, rightspell, answer));
+
+	}//while
+	
 	
 
-	
-	
-	
-	
-	
-	
-	
+
+%>
+<div class="container">
+	<div class="box">
+		<h3>알쏭달쏭 맞춤법 Quiz!</h3>
+		<div class="quiz">
+	 		<div class="spell" id="left"><%=spellist.get(idx).getLeft() %></div>
+			<h1>VS</h1>
+			<div class="spell" id="right"><%=spellist.get(idx).getRight() %></div>
+		</div>
+	</div>
+</div>
+
+
+<%
+
 }catch(Exception e){
 	e.printStackTrace();
 }finally{
@@ -49,17 +75,28 @@ try{
 	if(conn!=null){try{conn.close();}catch(Exception e){}}//if
 }
 
-
 %>
-<div class="container">
-	<div class="box">
-		<h3>알쏭달쏭 맞춤법 Quiz!</h3>
-		<div class="quiz">
-			<h4 class="spell"></h4>
-			<h4 class="spell"></h4>
-		</div>
-	</div>
-</div>
+
+
+
+
+
+
+
 
 </body>
 </html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+

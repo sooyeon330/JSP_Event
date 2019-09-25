@@ -4,6 +4,15 @@ public class Spell {
 	String right;
 	String answer;
 	
+	public Spell() {
+		super();
+	}
+	public Spell(String left, String right, String answer) {
+		super();
+		this.left = left;
+		this.right = right;
+		this.answer = answer;
+	}
 	public String getLeft() {
 		return left;
 	}
