@@ -14,6 +14,41 @@
 </head>
 <body>
 <%
+request.setCharacterEncoding("utf-8");
+
+Connection conn =null;
+PreparedStatement pstmt = null;
+ResultSet rs = null;
+
+String url = "jdbc:oracle:thin:@localhost:1521:XE";
+String user = "jsp_event";
+String pass = "3616";
+
+Class.forName("oracle.jdbc.driver.OracleDriver");
+conn = DriverManager.getConnection(url, user, pass);
+
+ArrayList<Spell> spell = new ArrayList<>();
+
+try{
+	
+	String sql="SELECT * FROM SPELL WHERE ROWNUM < 5 ORDER BY DBMS_RANDOM.RANDOM";
+	
+
+	
+	
+	
+	
+	
+	
+	
+}catch(Exception e){
+	e.printStackTrace();
+}finally{
+	if(rs!=null){try{rs.close();}catch(Exception e){}}//if
+	if(pstmt!=null){try{pstmt.close();}catch(Exception e){}}//if
+	if(conn!=null){try{conn.close();}catch(Exception e){}}//if
+}
+
 
 %>
 <div class="container">
