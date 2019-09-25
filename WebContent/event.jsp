@@ -9,14 +9,15 @@
 <style>
 .container {
   position: relative;
-  width: 200px;
+  width: 250px;
   height: 150px;
   float: left;
+  margin:10px;
 }
 
 .image {
   display: block;
-  width: 100%;
+  width: 70%;
   height: auto;
 }
 
@@ -54,54 +55,56 @@
 <table>
 	<tr>
 		<td>
-		<div class="container">
-		  <img src="img/logo.png" alt="Avatar" class="image">
-		  <div class="overlay">
-		    <div class="text">Hello World</div>
-		  </div>
-		</div>
+			<div class="container">
+			  <a href="templateTest.jsp?CONTENTPAGE=spelling.jsp">
+				  <img src="img/logo.png" alt="Avatar" class="image">
+				  <div class="overlay">
+				    <div class="text">맞춤법 퀴즈</div>
+				  </div>
+			  </a>
+			</div>
 		</td>
 		<td>
-		<div class="container">
-		  <img src="img/logo.png" alt="Avatar" class="image">
-		  <div class="overlay">
-		    <div class="text">Hello World</div>
-		  </div>
-		</div>
+			<div class="container">
+			  <img src="img/logo.png" alt="Avatar" class="image">
+			  <div class="overlay">
+			    <div class="text">Hello World</div>
+			  </div>
+			</div>
 		</td>
 		<td>
-		<div class="container">
-		  <img src="img/logo.png" alt="Avatar" class="image">
-		  <div class="overlay">
-		    <div class="text">Hello World</div>
-		  </div>
-		</div>
+			<div class="container">
+			  <img src="img/logo.png" alt="Avatar" class="image">
+			  <div class="overlay">
+			    <div class="text">Hello World</div>
+			  </div>
+			</div>
 		</td>
 	</tr>
 	<tr>
 		<td>
-		<div class="container">
-		  <img src="img/logo.png" alt="Avatar" class="image">
-		  <div class="overlay">
-		    <div class="text">Hello World</div>
-		  </div>
-		</div>
+			<div class="container">
+			  <img src="img/logo.png" alt="Avatar" class="image">
+			  <div class="overlay">
+			    <div class="text">Hello World</div>
+			  </div>
+			</div>
 		</td>
 		<td>
-		<div class="container">
-		  <img src="img/logo.png" alt="Avatar" class="image">
-		  <div class="overlay">
-		    <div class="text">Hello World</div>
-		  </div>
-		</div>
+			<div class="container">
+			  <img src="img/logo.png" alt="Avatar" class="image">
+			  <div class="overlay">
+			    <div class="text">Hello World</div>
+			  </div>
+			</div>
 		</td>
 		<td>
-		<div class="container">
-		  <img src="img/logo.png" alt="Avatar" class="image">
-		  <div class="overlay">
-		    <div class="text">Hello World</div>
-		  </div>
-		</div>
+			<div class="container">
+			  <img src="img/logo.png" alt="Avatar" class="image">
+			  <div class="overlay">
+			    <div class="text">Hello World</div>
+			  </div>
+			</div>
 		</td>
 	</tr>
 
