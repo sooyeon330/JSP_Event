@@ -50,12 +50,13 @@ try{
 
 	}//while
 	
+	request.setAttribute("spellist", spellist);
 
 %>
-<div class='container'>
+<div class='quizDiv'>
 	<div class='box'>
 		<h3>알쏭달쏭 맞춤법 Quiz!</h3>
-		<form action="spellcheck.jsp" method="post" class="form">
+		<form action="templateTest.jsp?CONTENTPAGE=spellingcheck.jsp" method="post" class="form">
 			<% for(int i=0; i<spellist.size(); i++) {%>
 			<div class='quiz'>
 				<div class="inputGroup">
@@ -63,8 +64,9 @@ try{
 				</div>
 				<h2>VS</h2>
 				<div class="inputGroup">
-					<input id="radio<%=i %>0" name="quiz<%=i%>" type="radio" value="2"/><label for="radio<%=i%>0"><%=spellist.get(i).getRight() %></label>
+					<input id="radio<%=i %>0" name="quiz<%=i %>" type="radio" value="2"/><label for="radio<%=i %>0"><%=spellist.get(i).getRight() %></label>
 				</div>
+				<input type="hidden" name="answer<%=i %>" value="<%=spellist.get(i).getAnswer() %>" />
 			</div>
 			
 			<%-- <div class='quiz'>
@@ -77,7 +79,9 @@ try{
 		</form>
 	</div>
 </div>
-
+<div class="resultDiv">
+		<jsp:include  page="spellingcheck.jsp" flush="false" />
+</div>
 <%
 
 }catch(Exception e){
