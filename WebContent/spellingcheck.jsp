@@ -28,12 +28,6 @@
 		choice[i] = request.getParameter("quiz"+i);
 		answer[i] = request.getParameter("answer"+i);
 		
-		// 답 텍스트로 얻어오기
-/* 		switch(answer[i]){
-		case "1" : answer = ; break;
-		case "2" : answer = ; break;
-		} */
-		
 		
 		out.println("choice : "+choice[i]+","+"answer : "+answer[i]+"<br>");
 	}
@@ -51,6 +45,19 @@
 	int percent;
 	
 	percent = chkCnt* 20;
+	
+	for(int i=0; i<5; i++){
+		// 답 텍스트로 얻어오기
+		switch(answer[i]){
+		case "1" : answer[i] = spellist.get(i).getLeft(); break;
+		case "2" : answer[i] = spellist.get(i).getRight(); break;
+		} 
+		
+		switch(choice[i]){
+			case "1" : choice[i] = spellist.get(i).getLeft(); break;
+			case "2" : choice[i] = spellist.get(i).getRight(); break;
+		} 
+	}
 
 %>
 	
@@ -71,10 +78,10 @@
 %>
 			<tr>
 				<td>
-					<%=spellist.get(Integer.parseInt(answer[i])).getAnswer() %>
+					<%=answer[i]%>
 				</td>
 				<td>
-					<%=spellist.get(Integer.parseInt(choice[i])).getAnswer() %>
+					<%=choice[i]%>
 				</td>
 			</tr>
 <%		}

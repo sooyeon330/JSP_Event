@@ -81,7 +81,7 @@ try{
 </div>
 <%-- <div class="resultDiv">
 		<jsp:include  page="spellingcheck.jsp" flush="false" />
-</div> --%>
+</div>  --%>
 <%
 
 }catch(Exception e){
