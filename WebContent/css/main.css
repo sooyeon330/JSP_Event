@@ -21,6 +21,7 @@ body, html {
 } */
 .content {
 	margin-top:100px;
+	margin-bottom:10%;
 	padding: 20px 15%;
 	text-align: center;
 	font-size:11pt;

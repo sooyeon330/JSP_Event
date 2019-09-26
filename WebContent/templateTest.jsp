@@ -28,8 +28,8 @@
 	<div class="content">
 		<jsp:include  page="<%=contentPage%>" flush="false" />
 	</div>
-	<div class="footer">
+	<%-- <div class="footer">
 		<jsp:include  page="bottom.jsp" flush="false" />
-	</div>
+	</div> --%>
 </body>
 </html>
