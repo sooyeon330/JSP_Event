@@ -37,7 +37,7 @@ try{
 	String rightspell="";
 	String answer="";
 	
-	String sql="SELECT leftspell, rightspell, answer FROM SPELL WHERE ROWNUM <= 5 ORDER BY DBMS_RANDOM.RANDOM";
+	String sql="SELECT id, leftspell, rightspell, answer FROM SPELL WHERE ROWNUM <= 5 ORDER BY DBMS_RANDOM.RANDOM";
 	pstmt = conn.prepareStatement(sql);
 	rs = pstmt.executeQuery();
 	
@@ -46,7 +46,7 @@ try{
 		rightspell = rs.getString("rightspell");
 		answer = rs.getString("answer");
 		
-		spellist.add(new Spell(leftspell, rightspell, answer));
+		spellist.add(new Spell(rs.getString("id"),leftspell, rightspell, answer));
 
 	}//while
 	
@@ -79,9 +79,9 @@ try{
 		</form>
 	</div>
 </div>
-<div class="resultDiv">
+<%-- <div class="resultDiv">
 		<jsp:include  page="spellingcheck.jsp" flush="false" />
-</div>
+</div> --%>
 <%
 
 }catch(Exception e){

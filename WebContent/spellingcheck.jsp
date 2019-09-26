@@ -28,6 +28,13 @@
 		choice[i] = request.getParameter("quiz"+i);
 		answer[i] = request.getParameter("answer"+i);
 		
+		// 답 텍스트로 얻어오기
+/* 		switch(answer[i]){
+		case "1" : answer = ; break;
+		case "2" : answer = ; break;
+		} */
+		
+		
 		out.println("choice : "+choice[i]+","+"answer : "+answer[i]+"<br>");
 	}
 		
@@ -55,12 +62,26 @@
 		<div class="w3-light-grey">
 			<div id="myBar" class="w3-container w3-green w3-center" style="width:0%"></div>
 		</div>
+		<table>
+				<tr>
+					<td>정답</td><td>선택한 답</td>
+				</tr>
 <%
-	
+		for(int i=0; i<spellist.size(); i++){
+%>
+			<tr>
+				<td>
+					<%=spellist.get(Integer.parseInt(answer[i])).getAnswer() %>
+				</td>
+				<td>
+					<%=spellist.get(Integer.parseInt(choice[i])).getAnswer() %>
+				</td>
+			</tr>
+<%		}
 
 %>
+	</table>
 	</div>
-
 	<input type="button" class="submit" onclick="location.href='templateTest.jsp?CONTENTPAGE=spelling.jsp'" value="다시하기" />
 <%
 	
