@@ -11,6 +11,7 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <link rel="stylesheet" href="css/adminquiz.css">
+<link rel="stylesheet" href="css/radiotoggle.css">
 <link href="https://fonts.googleapis.com/css?family=Fira+Sans" rel="stylesheet">
 
 </head>
@@ -51,7 +52,8 @@ try{
 
 	}//while
 %>
-<table border=1>
+<div class="box">
+<table>
 	<tr>
 		<td >번호</td><td >보기1</td><td >보기2</td><td> 정답</td><td> </td><td> </td>
 	</tr>
@@ -66,8 +68,10 @@ try{
 		<td><input type="text" name="right" class="rightval" value="<%=spellist.get(i).getRight() %>" ></td>
 		<td><input type="text" name="answer" class="answerval" value="<%=spellist.get(i).getAnswer()%>" ></td>
 		<td>
-			<input type="radio" name="dao" class="submit" value="modi" >수정
-			<input type="radio" name="dao" class="submit" value="del"  >삭제
+			<input id="toggle-on<%=i %>" class="toggle toggle-left" name="dao" value="modi" type="radio" checked>
+				<label for="toggle-on<%=i %>" class="btn">수정</label> 
+			<input id="toggle-off<%=i %>" class="toggle toggle-right" name="dao" value="del" type="radio">
+				<label for="toggle-off<%=i %>" class="btn">삭제</label>
 		</td>
 		<td>
 			<input type="submit" value="submit">
@@ -94,7 +98,7 @@ try{
 	</form>
 	</tr>
 </table>
-
+</div>
 <%
 	
 }catch(Exception e){

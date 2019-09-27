@@ -13,3 +13,24 @@ table{
 .answerval{
 	width:50px;
 }
+.box{
+	padding:50px;
+	border: 2px solid #1a1a1a;
+	margin-bottom:100px;
+}
+input[type="text"].leftval,.rightval{
+	border:1px solid #2DB400;
+	border-radius: 5px;
+	padding:5px 3px;
+}
+input[type="text"].num{
+	border:0px;
+
+	text-align:center;
+}
+input[type="text"].answerval{
+	border:1px solid #1a1a1a6e;
+	border-radius: 5px;
+	text-align:center;
+	padding:5px 3px;
+}
