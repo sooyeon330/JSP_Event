@@ -7,6 +7,9 @@
 <title>Insert title here</title>
 </head>
 <style>
+.table{
+	margin:auto;
+}
 .container {
   position: relative;
   width: 250px;
@@ -66,36 +69,12 @@
 		</td>
 		<td>
 			<div class="container">
-			  <img src="img/logo.png" alt="Avatar" class="image">
-			  <div class="overlay">
-			    <div class="text">Hello World</div>
-			  </div>
-			</div>
-		</td>
-		<td>
-			<div class="container">
-			  <img src="img/logo.png" alt="Avatar" class="image">
-			  <div class="overlay">
-			    <div class="text">Hello World</div>
-			  </div>
-			</div>
-		</td>
-	</tr>
-	<tr>
-		<td>
-			<div class="container">
-			  <img src="img/logo.png" alt="Avatar" class="image">
-			  <div class="overlay">
-			    <div class="text">Hello World</div>
-			  </div>
-			</div>
-		</td>
-		<td>
-			<div class="container">
-			  <img src="img/logo.png" alt="Avatar" class="image">
-			  <div class="overlay">
-			    <div class="text">Hello World</div>
-			  </div>
+			  <a href="templateTest.jsp?CONTENTPAGE=rowpoem.jsp">
+				  <img src="img/logo.png" alt="Avatar" class="image">
+				  <div class="overlay">
+				    <div class="text">3행시 이벤트</div>
+				  </div>
+			  </a>
 			</div>
 		</td>
 		<td>
