@@ -1,0 +1,15 @@
+table{
+	margin:auto;
+}
+.num{
+	width:50px;
+}
+.leftval{
+	width:300px;
+}
+.rightval{
+	width:300px;
+}
+.answerval{
+	width:50px;
+}

@@ -7,7 +7,7 @@
 		  <a href="templateTest.jsp?CONTENTPAGE=event.jsp">이벤트</a>
 		  <a href="templateTest.jsp?CONTENTPAGE=introduce.jsp">한글날</a>
 		  <a href="templateTest.jsp?CONTENTPAGE=hangle.jsp">한글</a>
-		  <a href="login.jsp">admin</a>
+		  <a href="login.jsp" target="blank">admin</a>
 		</div>
 	</div>
 	<script>

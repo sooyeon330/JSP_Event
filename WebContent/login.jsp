@@ -10,7 +10,7 @@
 
 <div class='form'>
   <h2>Login</h2>
-  <form action="adminPage.jsp" method="post">
+  <form action="adminPage.jsp?CONTENTPAGE=content.jsp" method="post">
 	  <input name='id' placeholder='UserID' type='text'>
 	  <input id='pw' name='pw' placeholder='Password' type='password'>
 	  <input type='submit' id="adminbtn" class='animated'  value='Login'>
