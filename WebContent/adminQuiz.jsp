@@ -53,21 +53,46 @@ try{
 %>
 <table border=1>
 	<tr>
-		<td >번호</td><td >보기1</td><td >보기2</td><td > 정답</td>
+		<td >번호</td><td >보기1</td><td >보기2</td><td> 정답</td><td> </td><td> </td>
 	</tr>
 <%
+
 	for(int i=0; i<spellist.size(); i++){
 %>
 	<tr>
-		<td><input type="text" class="num" value="<%=spellist.get(i).getId() %>" readonly></td>
-		<td ><input type="text" class="leftval" value="<%=spellist.get(i).getLeft() %>" ></td>
-		<td ><input type="text" class="rightval" value="<%=spellist.get(i).getRight() %>" ></td>
-		<td ><input type="text" class="answerval" value="<%=spellist.get(i).getAnswer()%>" ></td>
+	<form action="quizProc.jsp?" method="post">
+		<td><input type="text" name="id" class="num" value="<%=spellist.get(i).getId() %>" readonly ></td>
+		<td><input type="text" name="left" class="leftval" value="<%=spellist.get(i).getLeft() %>"  ></td>
+		<td><input type="text" name="right" class="rightval" value="<%=spellist.get(i).getRight() %>" ></td>
+		<td><input type="text" name="answer" class="answerval" value="<%=spellist.get(i).getAnswer()%>" ></td>
+		<td>
+			<input type="radio" name="dao" class="submit" value="modi" >수정
+			<input type="radio" name="dao" class="submit" value="del"  >삭제
+		</td>
+		<td>
+			<input type="submit" value="submit">
+		</td>
+	</form>
 	</tr>
 <%  
 	}
 %>
-
+	<tr>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+	</tr>
+	<tr>
+	<form action="quizProc.jsp?dao=insert" method="post">
+		<td><input type="text" name="id" class="num" readonly ></td>
+		<td><input type="text" name="left" class="leftval"   ></td>
+		<td><input type="text" name="right" class="rightval"  ></td>
+		<td><input type="text" name="answer" class="answerval"  ></td>
+		<td><input type="submit" class="submit" value="추가하기"></td>
+	</form>
+	</tr>
 </table>
 
 <%
