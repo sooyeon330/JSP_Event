@@ -7,6 +7,6 @@
 <title>Insert title here</title>
 </head>
 <body>
-content
+https://terms.naver.com/entry.nhn?docId=3569386&cid=58840&categoryId=58856
 </body>
 </html>

@@ -74,7 +74,7 @@ try{
 				<label for="toggle-off<%=i %>" class="btn">삭제</label>
 		</td>
 		<td>
-			<input type="submit" value="submit">
+			<input type="submit" value="전송">
 		</td>
 	</form>
 	</tr>
