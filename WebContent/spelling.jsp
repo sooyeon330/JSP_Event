@@ -38,7 +38,7 @@ try{
 	String rightspell="";
 	String answer="";
 	
-	String sql="SELECT id, leftspell, rightspell, answer FROM SPELL WHERE ROWNUM <= 5 ORDER BY DBMS_RANDOM.RANDOM";
+	String sql="SELECT id, leftspell, rightspell, answer FROM SPELL  ORDER BY DBMS_RANDOM.RANDOM";
 	pstmt = conn.prepareStatement(sql);
 	rs = pstmt.executeQuery();
 	
@@ -55,14 +55,14 @@ try{
 	<div class='box'>
 		<h3>알쏭달쏭 맞춤법 Quiz!</h3>
 		<form action="templateTest.jsp?CONTENTPAGE=spellingcheck.jsp" method="post" class="form">
-			<% for(int i=0; i<spellist.size(); i++) {%>
+			<% for(int i=0; i<5; i++) {%>
 			<div class='quiz'>
 				<div class="inputGroup">
-					<input id="radio<%=i %>" name="quiz<%=i%>" type="radio" value="1"/><label for="radio<%=i%>"><%=spellist.get(i).getLeft() %></label>
+					<input id="radio<%=spellist.get(i).getId() %>" name="quiz<%=i%>" type="radio" value="1"/><label for="radio<%=i%>"><%=spellist.get(i).getLeft() %></label>
 				</div>
 				<h2>VS</h2>
 				<div class="inputGroup">
-					<input id="radio<%=i %>0" name="quiz<%=i %>" type="radio" value="2"/><label for="radio<%=i %>0"><%=spellist.get(i).getRight() %></label>
+					<input id="radio<%=spellist.get(i).getId() %>0" name="quiz<%=i %>" type="radio" value="2"/><label for="radio<%=i %>0"><%=spellist.get(i).getRight() %></label>
 				</div>
 				<input type="hidden" name="answer<%=i %>" value="<%=spellist.get(i).getAnswer() %>" />
 			</div>

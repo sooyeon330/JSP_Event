@@ -37,7 +37,7 @@ try{
 	String rightspell="";
 	String answer="";
 	
-	String sql="SELECT id, leftspell, rightspell, answer FROM SPELL WHERE ROWNUM <= 5 ORDER BY DBMS_RANDOM.RANDOM";
+	String sql="SELECT id, leftspell, rightspell, answer FROM SPELL";
 	pstmt = conn.prepareStatement(sql);
 	rs = pstmt.executeQuery();
 	
@@ -61,7 +61,7 @@ try{
 		rightAns[i] = request.getParameter("answer"+i);
 		
 		
-	//	out.println("choice : "+choice[i]+","+"answer : "+rightAns[i]+"<br>");
+		out.println("choice : "+choice[i]+","+"answer : "+rightAns[i]+"<br>");
 	}
 		
 	
@@ -70,7 +70,7 @@ try{
 	for(int i=0; i<5; i++){
 		if(choice[i].equals(rightAns[i])){
 			chkCnt++;
-	//		out.println(chkCnt);
+			out.println(chkCnt);
 		}
 	}
 
