@@ -75,9 +75,9 @@ try{
 	for(int i=0; i<5; i++){
 		if(choice[i].equals(rightAns[i])){
 			chkCnt++;
-			out.println(chkCnt);
+	//		out.println(chkCnt);
 		}
-		out.println("choice : "+choice[i]+","+"answer : "+rightAns[i]+"<br>");
+//		out.println("choice : "+choice[i]+","+"answer : "+rightAns[i]+"<br>");
 	}
 
 	int percent;
@@ -128,7 +128,7 @@ try{
 	</table>
 	</div>
 	<input type="button" class="submit" onclick="location.href='templateTest.jsp?CONTENTPAGE=spelling.jsp'" value="다시하기" />
-	
+	<input type="button" class="submit" onclick="location.href='templateTest.jsp?CONTENTPAGE=event.jsp'" value="돌아가기" />
 <script>
 $(function(){
 	$(".answerDiv").hide();
