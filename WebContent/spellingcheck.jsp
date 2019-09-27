@@ -53,25 +53,31 @@ try{
 <%
 	request.setCharacterEncoding("utf-8");
 
+	
 	String[] choice = new String[5];
-	String[] rightAns = new String[5];
-	
-	for(int i=0; i<5; i++){
-		choice[i] = request.getParameter("quiz"+i);
-		rightAns[i] = request.getParameter("answer"+i);
-		
-		
-		out.println("choice : "+choice[i]+","+"answer : "+rightAns[i]+"<br>");
+	String[] rightAns = new String[5]; //맞는 답
+	int[] quizId = new int[5];
+	int index=0;
+	for(int i=0; i<spellist.size(); i++){
+		if(request.getParameter("quiz"+spellist.get(i).getId())!=null){
+	//		out.println("i : "+i+"<br>");
+	//		out.println("choice : "+request.getParameter("quiz"+spellist.get(i).getId())+" ");
+	//		out.println("answer : "+spellist.get(i).getAnswer()+"<br>");
+			quizId[index] = i;
+			choice[index] = request.getParameter("quiz"+spellist.get(i).getId());
+			rightAns[index] = spellist.get(i).getAnswer();
+			index++;
+		}
 	}
-		
-	
+
 	int chkCnt =0;	
-	
+	//맞췄는지 체크
 	for(int i=0; i<5; i++){
 		if(choice[i].equals(rightAns[i])){
 			chkCnt++;
 			out.println(chkCnt);
 		}
+		out.println("choice : "+choice[i]+","+"answer : "+rightAns[i]+"<br>");
 	}
 
 	int percent;
@@ -81,15 +87,15 @@ try{
 	for(int i=0; i<5; i++){
 		// 답 텍스트로 얻어오기
 		switch(rightAns[i]){
-		case "1" : rightAns[i] = spellist.get(i).getLeft(); break;
-		case "2" : rightAns[i] = spellist.get(i).getRight(); break;
+		case "1" : rightAns[i] = spellist.get(quizId[i]).getLeft(); break;
+		case "2" : rightAns[i] = spellist.get(quizId[i]).getRight(); break;
 		} 
 		
 		switch(choice[i]){
-			case "1" : choice[i] = spellist.get(i).getLeft(); break;
-			case "2" : choice[i] = spellist.get(i).getRight(); break;
+			case "1" : choice[i] = spellist.get(quizId[i]).getLeft(); break;
+			case "2" : choice[i] = spellist.get(quizId[i]).getRight(); break;
 		} 
-	}
+	} 
 
 %>
 	
@@ -106,7 +112,7 @@ try{
 					<td>정답</td><td>선택한 답</td>
 				</tr>
 <%
-		for(int i=0; i<spellist.size(); i++){
+		for(int i=0; i<5; i++){
 %>
 			<tr>
 				<td>
@@ -132,8 +138,7 @@ $(function(){
 	});
 });
 	
-	 
-	 
+	 	 
 function move() {
   var elem = document.getElementById("myBar");   
   var width = 0;
@@ -147,7 +152,7 @@ function move() {
       elem.innerHTML = width * 1  + '%';
     }
   }
-}
+} 
 </script>
 <%
 

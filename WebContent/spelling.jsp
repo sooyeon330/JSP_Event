@@ -25,6 +25,7 @@ PreparedStatement pstmt = null;
 ResultSet rs = null;
 
 ArrayList<Spell> spellist = new ArrayList<>();
+String[] choice = new String[5];
 int idx=0;
 try{
 	String url = "jdbc:oracle:thin:@localhost:1521:XE";
@@ -58,28 +59,27 @@ try{
 			<% for(int i=0; i<5; i++) {%>
 			<div class='quiz'>
 				<div class="inputGroup">
-					<input id="radio<%=spellist.get(i).getId() %>" name="quiz<%=i%>" type="radio" value="1"/><label for="radio<%=i%>"><%=spellist.get(i).getLeft() %></label>
+					<input id="radio<%=i %>" name="quiz<%=spellist.get(i).getId() %>" type="radio" value="1"/><label for="radio<%=i%>"><%=spellist.get(i).getLeft() %></label>
 				</div>
 				<h2>VS</h2>
 				<div class="inputGroup">
-					<input id="radio<%=spellist.get(i).getId() %>0" name="quiz<%=i %>" type="radio" value="2"/><label for="radio<%=i %>0"><%=spellist.get(i).getRight() %></label>
+					<input id="radio<%=i %>0" name="quiz<%=spellist.get(i).getId() %>" type="radio" value="2"/><label for="radio<%=i %>0"><%=spellist.get(i).getRight() %></label>
 				</div>
-				<input type="hidden" name="answer<%=i %>" value="<%=spellist.get(i).getAnswer() %>" />
 			</div>
 			
-			<%-- <div class='quiz'>
-		 		<input type="text" class='spell' id='left' value="<%=spellist.get(i).getLeft() %>" readonly/>
-					<h1>VS</h1>
-				<div class='spell' id='right'><%=spellist.get(i).getRight() %></div>
-			</div> --%>
-			<%} %>
+			
+			<%
+				choice[i] = spellist.get(i).getId();
+			}
+				request.setAttribute("choice", choice);
+			%>
 			<input class="submit" type="submit" id="goAndswer" value="채점하기">
 		</form>
 	</div>
 </div>
 
 <%
-
+	
 }catch(Exception e){
 	e.printStackTrace();
 }finally{
