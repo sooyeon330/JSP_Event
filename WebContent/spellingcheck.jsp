@@ -17,28 +17,60 @@
 </head>
 <body>
 <%
+request.setCharacterEncoding("utf-8");
+
+Connection conn =null;
+PreparedStatement pstmt = null;
+ResultSet rs = null;
+
+ArrayList<Spell> spellist = new ArrayList<>();
+int idx=0;
+try{
+	String url = "jdbc:oracle:thin:@localhost:1521:XE";
+	String user = "jsp_event";
+	String pass = "3616";
+
+	Class.forName("oracle.jdbc.driver.OracleDriver");
+	conn = DriverManager.getConnection(url, user, pass);
+	
+	String leftspell="";
+	String rightspell="";
+	String answer="";
+	
+	String sql="SELECT id, leftspell, rightspell, answer FROM SPELL WHERE ROWNUM <= 5 ORDER BY DBMS_RANDOM.RANDOM";
+	pstmt = conn.prepareStatement(sql);
+	rs = pstmt.executeQuery();
+	
+	while(rs.next()){
+		leftspell = rs.getString("leftspell");
+		rightspell = rs.getString("rightspell");
+		answer = rs.getString("answer");
+		
+		spellist.add(new Spell(rs.getString("id"),leftspell, rightspell, answer));
+
+	}//while
+%>
+<%
 	request.setCharacterEncoding("utf-8");
 
-	ArrayList<Spell> spellist = (ArrayList<Spell>)request.getAttribute("spellist");
-
 	String[] choice = new String[5];
-	String[] answer = new String[5];
+	String[] rightAns = new String[5];
 	
 	for(int i=0; i<5; i++){
 		choice[i] = request.getParameter("quiz"+i);
-		answer[i] = request.getParameter("answer"+i);
+		rightAns[i] = request.getParameter("answer"+i);
 		
 		
-		out.println("choice : "+choice[i]+","+"answer : "+answer[i]+"<br>");
+	//	out.println("choice : "+choice[i]+","+"answer : "+rightAns[i]+"<br>");
 	}
 		
 	
 	int chkCnt =0;	
 	
 	for(int i=0; i<5; i++){
-		if(choice[i].equals(answer[i])){
+		if(choice[i].equals(rightAns[i])){
 			chkCnt++;
-			out.println(chkCnt);
+	//		out.println(chkCnt);
 		}
 	}
 
@@ -48,9 +80,9 @@
 	
 	for(int i=0; i<5; i++){
 		// 답 텍스트로 얻어오기
-		switch(answer[i]){
-		case "1" : answer[i] = spellist.get(i).getLeft(); break;
-		case "2" : answer[i] = spellist.get(i).getRight(); break;
+		switch(rightAns[i]){
+		case "1" : rightAns[i] = spellist.get(i).getLeft(); break;
+		case "2" : rightAns[i] = spellist.get(i).getRight(); break;
 		} 
 		
 		switch(choice[i]){
@@ -78,7 +110,7 @@
 %>
 			<tr>
 				<td>
-					<%=answer[i]%>
+					<%=rightAns[i]%>
 				</td>
 				<td>
 					<%=choice[i]%>
@@ -90,23 +122,24 @@
 	</table>
 	</div>
 	<input type="button" class="submit" onclick="location.href='templateTest.jsp?CONTENTPAGE=spelling.jsp'" value="다시하기" />
-<%
 	
-
-%>
 <script>
 $(function(){
+	$(".answerDiv").hide();
 	$("#showRS").click(function(){
+		$(".answerDiv").show();
 		move();
 	});
 });
-
+	
+	 
+	 
 function move() {
   var elem = document.getElementById("myBar");   
   var width = 0;
   var id = setInterval(frame, 10);
   function frame() {
-    if (width >= <%=percent%>) {
+	if (width >= <%= percent %>) {
       clearInterval(id);
     } else {
       width++; 
@@ -116,6 +149,18 @@ function move() {
   }
 }
 </script>
+<%
+
+}catch(Exception e){
+	e.printStackTrace();
+}finally{
+	if(rs!=null){try{rs.close();}catch(Exception e){}}//if
+	if(pstmt!=null){try{pstmt.close();}catch(Exception e){}}//if
+	if(conn!=null){try{conn.close();}catch(Exception e){}}//if
+}
+
+%>
+
 </body>
 </html>
 

@@ -13,6 +13,7 @@
 <link rel="stylesheet" href="css/spelling.css">
 <link rel="stylesheet" href="css/inputRadio.css">
 <link href="https://fonts.googleapis.com/css?family=Fira+Sans" rel="stylesheet">
+
 </head>
 
 <body>
@@ -49,9 +50,6 @@ try{
 		spellist.add(new Spell(rs.getString("id"),leftspell, rightspell, answer));
 
 	}//while
-	
-	request.setAttribute("spellist", spellist);
-
 %>
 <div class='quizDiv'>
 	<div class='box'>
@@ -75,13 +73,11 @@ try{
 				<div class='spell' id='right'><%=spellist.get(i).getRight() %></div>
 			</div> --%>
 			<%} %>
-			<input class="submit" type="submit" value="채점하기">
+			<input class="submit" type="submit" id="goAndswer" value="채점하기">
 		</form>
 	</div>
 </div>
-<%-- <div class="resultDiv">
-		<jsp:include  page="spellingcheck.jsp" flush="false" />
-</div>  --%>
+
 <%
 
 }catch(Exception e){
@@ -93,15 +89,9 @@ try{
 }
 
 %>
+
 </body>
 </html>
-<%!
-	public String PrintHtml(JspWriter out, ArrayList<Spell> spellist, int idx) throws Exception{
-		return ("<div class='spell' id='left'>"+spellist.get(idx).getLeft()
-					+"</div><h1>VS</h1><div class='spell' id='right'>"
-					+spellist.get(idx).getRight()+"</div>");
-	}
-%>
 
 
 

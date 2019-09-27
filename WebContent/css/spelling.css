@@ -34,4 +34,8 @@ h2{
 	cursor:pointer;
 }
 .resultDiv{
+	display:none;
+}
+.answerDiv{
+	margin:auto;
 }
